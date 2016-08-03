@@ -1,4 +1,4 @@
-FROM java:openjdk-8-jre
+FROM java:openjdk-8-jdk
 
 ENV BUILD_DIR /build
 ENV APP_DIR /app
