@@ -18,8 +18,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     git clone https://github.com/dcos/metronome.git && \
     cd metronome && \
     sbt -Dsbt.log.format=false universal:packageBin && \
-    mv $(find target/universal -name 'metronome-*-SNAPSHOT.zip' | sort | tail -1) $APP_DIR && \
-    unzip $APP_DIR/*.zip && \
+    mv $(find target/universal -name 'metronome-*-SNAPSHOT.zip' | sort | tail -1) $APP_DIR/ && \
+    cd $APP_DIR && \
+    unzip *.zip && \
     rm -rf $BUILD_DIR ~/.sbt ~/.ivy2 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
