@@ -14,6 +14,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     apt-get update && \
     apt-get install --no-install-recommends -y --force-yes mesos=$MESOS_VERSION git wget sbt && \
     mkdir -p $BUILD_DIR && \
+    mkdir -p $APP_DIR && \
     cd $BUILD_DIR && \
     git clone https://github.com/dcos/metronome.git && \
     cd metronome && \
