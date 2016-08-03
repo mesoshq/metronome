@@ -9,7 +9,7 @@ ENV MESOS_VERSION 1.0.0-2.0.89.debian81
 # Add package sources and install
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     echo "deb http://repos.mesosphere.io/debian jessie main" | tee /etc/apt/sources.list.d/mesosphere.list && \
-    echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list && \
+    echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list && \
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823 && \
     apt-get update && \
     apt-get install --no-install-recommends -y --force-yes mesos=$MESOS_VERSION git wget sbt && \
