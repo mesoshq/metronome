@@ -20,7 +20,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     sbt -Dsbt.log.format=false universal:packageBin && \
     mv $(find target/universal -name 'metronome-*-SNAPSHOT.zip' | sort | tail -1) $APP_DIR && \
     unzip $APP_DIR/*.zip && \
-    rm -rf target/* ~/.sbt ~/.ivy2 && \
+    rm -rf $BUILD_DIR ~/.sbt ~/.ivy2 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD docker_entrypoint.sh .
