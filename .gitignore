@@ -40,7 +40,7 @@ jspm_packages
 .idea/
 .idea/*.xml
 
-application/ 
+application/
 # Bower components
 application/public/bower_components
 
