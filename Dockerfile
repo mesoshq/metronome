@@ -12,9 +12,11 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list && \
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823 && \
     apt-get update && \
-    apt-get install --no-install-recommends -y --force-yes mesos=$MESOS_VERSION git wget sbt && \
+    apt-get install --no-install-recommends -y --force-yes mesos=$MESOS_VERSION git wget sbt libprotobuf-dev protobuf-compiler && \
     mkdir -p $BUILD_DIR && \
     mkdir -p $APP_DIR && \
+    systemctl disable mesos-master.service && \
+    systemctl disable mesos-slave.service && \
     cd $BUILD_DIR && \
     git clone https://github.com/dcos/metronome.git && \
     cd metronome && \
