@@ -2,6 +2,8 @@ FROM java:openjdk-8-jdk
 
 ENV BUILD_DIR /build
 ENV APP_DIR /app
+ENV MESOS_LIB_DIR /mesos
+ENV MESOS_NATIVE_JAVA_LIBRARY /mesos/libmesos-1.0.0.so
 
 # Overall ENV vars
 ENV MESOS_VERSION 1.0.0-2.0.89.debian81
@@ -15,8 +17,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     apt-get install --no-install-recommends -y --force-yes mesos=$MESOS_VERSION git sbt libprotobuf-dev protobuf-compiler && \
     mkdir -p $BUILD_DIR && \
     mkdir -p $APP_DIR && \
-    systemctl disable mesos-master.service && \
-    systemctl disable mesos-slave.service && \
+    mkdir -p $MESOS_LIB_DIR && \
+    cp /usr/lib/libmesos-1.0.0.so $MESOS_LIB_DIR/ && \
     cd $BUILD_DIR && \
     git clone https://github.com/dcos/metronome.git && \
     cd metronome && \
@@ -26,7 +28,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     unzip *.zip && \
     rm *.zip && \
     rm -rf $BUILD_DIR ~/.sbt ~/.ivy2 ~/.m2 && \
-    apt-get purge  -y --force-yes git sbt libprotobuf-dev protobuf-compiler && \
+    apt-get purge  -y --force-yes git sbt libprotobuf-dev protobuf-compiler mesos && \
     apt-get autoremove -y --force-yes && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
