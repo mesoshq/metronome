@@ -5,7 +5,35 @@ A Docker image (with build process) for dcos/metronome
 
 You can pass all configuration properties via environment variables, but with `_` instead of `.` (all lowercase). The properties can be found at [src/main/scala/dcos/metronome/MetronomeConfig.scala](https://github.com/dcos/metronome/blob/master/src/main/scala/dcos/metronome/MetronomeConfig.scala#L16-L49).
 
+The current list of configuration properties is:
+
+```
+metronome.framework.name
+metronome.mesos.master.url
+metronome.mesos.leader.ui.url
+metronome.mesos.role
+metronome.mesos.user
+metronome.mesos.executor.default
+metronome.mesos.failover.timeout
+metronome.mesos.authentication.principal
+metronome.mesos.authentication.secret.file
+metronome.features.enable
+metronome.plugin.dir
+metronome.plugin.conf
+metronome.history.count
+metronome.behavior.metrics
+metronome.leader.election.hostname
+metronome.akka.ask.timeout
+metronome.zk.url
+metronome.zk.session_timeout
+metronome.zk.timeout
+metronome.zk.compression.enabled
+metronome.zk.compression.threshold
+```
+
 ### Start with Marathon
+
+At minimum, you need to specify `metronome_mesos_master_url` and `metronome_zk_url` in an equivalent way as outlined below.
 
 ```
 {
