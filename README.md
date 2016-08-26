@@ -29,6 +29,18 @@ metronome.zk.session_timeout
 metronome.zk.timeout
 metronome.zk.compression.enabled
 metronome.zk.compression.threshold
+metronome.scheduler.reconciliation.interval
+metronome.scheduler.reconciliation.timeout
+metronome.scheduler.store.cache
+metronome.scheduler.task.launch.timeout
+metronome.scheduler.task.launch.confirm.timeout
+metronome.scheduler.task.env.vars.prefix
+metronome.scheduler.task.lost.expunge.gc
+metronome.scheduler.task.lost.expunge.initial.delay
+metronome.scheduler.task.lost.expunge.interval
+metronome.leader.preparation.timeout
+metronome.leader.proxy.timeout
+metronome.akka.actor.startup.max
 ```
 
 ### Start with Marathon
