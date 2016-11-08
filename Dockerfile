@@ -4,7 +4,8 @@ ENV BUILD_DIR /build
 ENV APP_DIR /app
 
 # Overall ENV vars
-ENV MESOS_VERSION 1.0.0-2.0.89.debian81
+ENV MESOS_VERSION 1.0.1-2.0.93.debian81
+ENV METRONOME_VERSION 0.1.9
 
 # Add package sources and install
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
@@ -20,8 +21,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     cd $BUILD_DIR && \
     git clone https://github.com/dcos/metronome.git && \
     cd metronome && \
+    git checkout tags/v$METRONOME_VERSION && \
     sbt -Dsbt.log.format=false universal:packageBin && \
-    mv $(find target/universal -name 'metronome-*-SNAPSHOT.zip' | sort | tail -1) $APP_DIR/ && \
+    mv $(find target/universal -name 'metronome-$METRONOME_VERSION-SNAPSHOT.zip' | sort | tail -1) $APP_DIR/ && \
     cd $APP_DIR && \
     unzip *.zip && \
     rm *.zip && \
