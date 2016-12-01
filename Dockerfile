@@ -22,8 +22,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     git clone https://github.com/dcos/metronome.git && \
     cd metronome && \
     git checkout tags/v$METRONOME_VERSION && \
+    sed -i 's/DEBUG/INFO/g' src/main/resources/logback.xml && \
     sbt -Dsbt.log.format=false universal:packageBin && \
-    mv $(find target/universal -name "metronome-$METRONOME_VERSION-SNAPSHOT.zip" | sort | tail -1) $APP_DIR/ && \
+    mv $(find target/universal -name "metronome-$METRONOME_VERSION.zip" | sort | tail -1) $APP_DIR/ && \
     cd $APP_DIR && \
     unzip *.zip && \
     rm *.zip && \
