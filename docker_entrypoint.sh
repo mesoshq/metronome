@@ -22,4 +22,4 @@ export JAVA_OPTS=$opts-Dplay.server.http.port=$PORT0
 echo $JAVA_OPTS
 
 # Start metronome
-$APP_DIR/metronome-0.1.7-SNAPSHOT/bin/metronome
+$APP_DIR/metronome-$METRONOME_VERSION-SNAPSHOT/bin/metronome
