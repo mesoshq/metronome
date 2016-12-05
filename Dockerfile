@@ -5,7 +5,7 @@ ENV APP_DIR /app
 
 # Overall ENV vars
 ENV MESOS_VERSION 1.0.1-2.0.93.debian81
-ENV METRONOME_VERSION 0.1.9
+ENV METRONOME_VERSION 0.2.0
 
 # Add package sources and install
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
