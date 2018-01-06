@@ -1,0 +1,11 @@
+env:
+  global:
+  - COMMIT=${TRAVIS_COMMIT::8}
+
+script:
+ - export TAG=`if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then echo "latest"; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi`
+ - export REPO=mesoshq/metronome
+ - docker build -t $REPO:$TAG -f Dockerfile .
+
+after_success:
+ - echo "Success!"

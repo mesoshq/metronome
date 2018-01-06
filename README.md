@@ -1,9 +1,9 @@
 # metronome
-A Docker image (with build process) for dcos/metronome
+A Docker image for [Metronome](https://github.com/dcos/metronome), the DC/OS job scheduler.
 
 ## Usage
 
-You can pass all configuration properties via environment variables, but with `_` instead of `.` (all lowercase). The properties can be found at [src/main/scala/dcos/metronome/MetronomeConfig.scala](https://github.com/dcos/metronome/blob/master/src/main/scala/dcos/metronome/MetronomeConfig.scala#L16-L49).
+You can pass all configuration properties via environment variables, **but with `_` instead of `.` (all lowercase)**. The properties can be found at [src/main/scala/dcos/metronome/MetronomeConfig.scala](https://github.com/dcos/metronome/blob/v0.3.3/src/main/scala/dcos/metronome/MetronomeConfig.scala#L16-L49).
 
 The current list of configuration properties is:
 
@@ -15,6 +15,7 @@ metronome.mesos.role
 metronome.mesos.user
 metronome.mesos.executor.default
 metronome.mesos.failover.timeout
+metronome.mesos.authentication.enabled
 metronome.mesos.authentication.principal
 metronome.mesos.authentication.secret.file
 metronome.features.enable
@@ -23,12 +24,18 @@ metronome.plugin.conf
 metronome.history.count
 metronome.behavior.metrics
 metronome.leader.election.hostname
+play.server.http.port
+play.server.https.port
+play.server.https.keyStore.path
+play.server.https.keyStore.password
 metronome.akka.ask.timeout
 metronome.zk.url
 metronome.zk.session_timeout
 metronome.zk.timeout
 metronome.zk.compression.enabled
 metronome.zk.compression.threshold
+metronome.killtask.kill_chunk_size
+metronome.killtask.kill_retry_timeout
 metronome.scheduler.reconciliation.interval
 metronome.scheduler.reconciliation.timeout
 metronome.scheduler.store.cache
@@ -58,7 +65,7 @@ At minimum, you need to specify `metronome_mesos_master_url` and `metronome_zk_u
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "mesoshq/metronome:latest",
+      "image": "mesoshq/metronome:0.3.3",
       "network": "HOST",
       "privileged": false,
       "parameters": [],
