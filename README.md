@@ -65,7 +65,7 @@ At minimum, you need to specify `metronome_mesos_master_url` and `metronome_zk_u
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "mesoshq/metronome:0.3.3",
+      "image": "mesoshq/metronome:0.4.1",
       "network": "HOST",
       "privileged": false,
       "parameters": [],

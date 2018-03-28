@@ -4,8 +4,8 @@ ENV BUILD_DIR /build
 ENV APP_DIR /app
 
 # Overall ENV vars
-ENV MESOS_VERSION 1.4.1-2.0.1
-ENV METRONOME_VERSION 0.3.3
+ENV MESOS_VERSION 1.5.0-2.0.2
+ENV METRONOME_VERSION 0.4.1
 
 # Add package sources and install
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
@@ -30,8 +30,8 @@ FROM java:openjdk-8-jdk
 ENV APP_DIR /app
 
 # Overall ENV vars
-ENV MESOS_VERSION 1.4.1-2.0.1
-ENV METRONOME_VERSION 0.3.3
+ENV MESOS_VERSION 1.5.0-2.0.2
+ENV METRONOME_VERSION 0.4.1
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     echo "deb http://repos.mesosphere.io/debian jessie main" | tee /etc/apt/sources.list.d/mesosphere.list && \
